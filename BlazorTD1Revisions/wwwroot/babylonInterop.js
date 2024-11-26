@@ -29,97 +29,50 @@
         const wallLong = 7.36;
         const wallCourt = 5.75;
 
+        // Créer les murs
+        for (let i = 1; i <= 4; i++) {
+            const [rotationY, positionX, positionZ, widthMur, color] = PositionMur(wallCourt, wallLong, i);
 
-        // Mur 1 (736 cm de long)
-        const wall1 = BABYLON.MeshBuilder.CreateBox("wall1", {
-            height: wallHeight,
-            width: wallLong, 
-            depth: wallThickness,
-            faceColors: [
-                new BABYLON.Color4(1, 0, 1, 1),
-                new BABYLON.Color4(1, 0, 1, 1),
-                new BABYLON.Color4(1, 0, 1, 1),
-                new BABYLON.Color4(1, 0, 1, 1),
-                new BABYLON.Color4(1, 0, 1, 1),
-                new BABYLON.Color4(1, 0, 1, 1)//violet
-            ]
-        }, scene);
-        wall1.position.x = 0;
-        wall1.position.z = - wallCourt / 2
+            const wall = BABYLON.MeshBuilder.CreateBox(`wall${i}`, {
+                height: wallHeight,
+                width: widthMur,
+                depth: wallThickness,
+                faceColors: [
+                    color,
+                    color,
+                    color,
+                    color,
+                    color,
+                    color,
+                    color
+                ]
+            }, scene);
 
-        // Mur 2 (535 cm de long)
-        const wall2 = BABYLON.MeshBuilder.CreateBox("wall2", {
-            height: wallHeight,
-            width: wallCourt, 
-            depth: wallThickness,
-            faceColors: [
-                new BABYLON.Color4(0, 1, 0, 1),
-                new BABYLON.Color4(0, 1, 0, 1),
-                new BABYLON.Color4(0, 1, 0, 1),
-                new BABYLON.Color4(0, 1, 0, 1),
-                new BABYLON.Color4(0, 1, 0, 1),
-                new BABYLON.Color4(0, 1, 0, 1)//vert
-            ]
-        }, scene);
-        wall2.rotation.y = - Math.PI / 2;
-        wall2.position.x = wallLong / 2
-        wall2.position.z = 0; 
-
-        // Mur 3 (736 cm de long, rotation de 90° pour l'orientation)
-        const wall3 = BABYLON.MeshBuilder.CreateBox("wall3", {
-            height: wallHeight,
-            width: wallLong, 
-            depth: wallThickness,
-            faceColors: [
-                new BABYLON.Color4(0, 0, 1, 1),
-                new BABYLON.Color4(0, 0, 1, 1),
-                new BABYLON.Color4(0, 0, 1, 1),
-                new BABYLON.Color4(0, 0, 1, 1),
-                new BABYLON.Color4(0, 0, 1, 1),
-                new BABYLON.Color4(0, 0, 1, 1)// bleu
-            ]
-        }, scene);
-        wall3.rotation.y = Math.PI; 
-        wall3.position.x = 0;
-        wall3.position.z = wallCourt / 2;
-
-        // Mur 4 (535 cm de long, rotation de 90° pour l'orientation)
-        const wall4 = BABYLON.MeshBuilder.CreateBox("wall4", {
-            height: wallHeight,
-            width: wallCourt, 
-            depth: wallThickness,
-            faceColors: [
-                new BABYLON.Color4(1, 1, 0, 1),
-                new BABYLON.Color4(1, 1, 0, 1),
-                new BABYLON.Color4(1, 1, 0, 1),
-                new BABYLON.Color4(1, 1, 0, 1), 
-                new BABYLON.Color4(1, 1, 0, 1), 
-                new BABYLON.Color4(1, 1, 0, 1) //jaune
-            ]
-        }, scene);
-        wall4.rotation.y = Math.PI / 2; 
-        wall4.position.x = - wallLong /2
-        wall4.position.z = 0; 
-
+            // Appliquer la rotation et la position
+            wall.rotation.y = rotationY;
+            wall.position.x = positionX;
+            wall.position.z = positionZ;
+        }
+        
         // Sol
         const floor = BABYLON.MeshBuilder.CreateBox("floor", {
             height: 0.01,
-            width: wallLong, 
-            depth: wallCourt 
+            width: wallLong,
+            depth: wallCourt
         }, scene);
-        floor.position.y = -1.35; 
+        floor.position.y = -1.35;
 
 
         // porte
         const porte = BABYLON.MeshBuilder.CreateBox("porte", {
-            height: 2.05, 
-            width: 0.93, 
-            depth: wallThickness + 0.2 
+            height: 2.05,
+            width: 0.93,
+            depth: wallThickness + 0.2
         }, scene);
         porte.rotation.y = -Math.PI / 2;
-        porte.position.x =  wallLong /2 ; 
+        porte.position.x = wallLong / 2;
         porte.position.y = wallHeight / 2 - 0.67 - (2.05 / 2)
-        porte.position.z = wallCourt / 2 - 0.55 - (0.93 /2)
+        porte.position.z = wallCourt / 2 - 0.55 - (0.93 / 2)
 
         // exemple MILIEU MUR
         const point = BABYLON.MeshBuilder.CreateBox("point", {
@@ -138,7 +91,7 @@
         point.rotation.y = 0;
         point.position.x = 0;
         point.position.y = 0;
-        point.position.z = - wallCourt / 2; 
+        point.position.z = - wallCourt / 2;
 
 
         // exemple MILIEU MUR NEG
@@ -158,7 +111,7 @@
         pointNeg.rotation.y = 0;
         pointNeg.position.x = - wallLong / 2;
         pointNeg.position.y = 0;
-        pointNeg.position.z = - wallCourt / 2; 
+        pointNeg.position.z = - wallCourt / 2;
 
         // cap1
         const cap1 = BABYLON.MeshBuilder.CreateBox("cap1", {
@@ -175,10 +128,10 @@
             ]
         }, scene);
         cap1.rotation.y = 0;
-        cap1.position.x = + wallLong / 2  - 3.16  - 0.1;
+        cap1.position.x = + wallLong / 2 - 3.16 - 0.1;
         cap1.position.y = + wallHeight / 2 - 0.70 - 0.1;
-        cap1.position.z = - wallCourt / 2; 
-        
+        cap1.position.z = - wallCourt / 2;
+
         // cap2
         const cap2 = BABYLON.MeshBuilder.CreateBox("cap2", {
             height: 0.2,
@@ -196,7 +149,7 @@
         cap2.rotation.y = 0;
         cap2.position.x = + wallLong / 2 - 6.62 - 0.1;
         cap2.position.y = + wallHeight / 2 - 1.56 - 0.1;
-        cap2.position.z = - wallCourt / 2; 
+        cap2.position.z = - wallCourt / 2;
 
 
         // cap3
@@ -235,7 +188,7 @@
         cap4.rotation.y = 0;
         cap4.position.x = - wallLong / 2 + 5.85 + 0.1;
         cap4.position.y = + wallHeight / 2 - 1.61 - 0.1;
-        cap4.position.z = wallCourt / 2; 
+        cap4.position.z = wallCourt / 2;
 
 
         // fenetre 1
@@ -313,7 +266,7 @@
         }, scene);
         rad2.rotation.y = -Math.PI / 2;
         rad2.position.x = - wallLong / 2;
-        rad2.position.y =  - 1.28 + (0.80 / 2)
+        rad2.position.y = - 1.28 + (0.80 / 2)
         rad2.position.z = - wallCourt / 2 + 2.56 + (1.60 / 2)
 
         // exemple POINT DEPART
@@ -332,7 +285,7 @@
         }, scene);
         depart.position.x = 0;
         depart.position.y = 0;
-        depart.position.z = 0; 
+        depart.position.z = 0;
 
         return scene;
     };
@@ -341,3 +294,41 @@
     engine.runRenderLoop(() => scene.render());
     window.addEventListener("resize", () => engine.resize());
 };
+
+function PositionMur(salleLargeur, salleLongueur, typeMur) {
+    let widthMur = 0;
+    let rotationY = 0;
+    let positionX = 0;
+    let positionZ = 0;
+    let color;
+
+    // Calcul des propriétés du mur en fonction du type (1, 2, 3, 4)
+    if (typeMur === 1) {
+        widthMur = salleLargeur;
+        rotationY = -Math.PI / 2;
+        positionX = salleLongueur / 2;
+        positionZ = 0;
+        color = new BABYLON.Color3.FromInts(153, 255, 255);
+    } else if (typeMur === 2) {
+        widthMur = salleLongueur;
+        rotationY = 0;
+        positionX = 0;
+        positionZ = salleLargeur / 2;
+        color = new BABYLON.Color3.FromInts(153, 255, 153);
+    } else if (typeMur === 3) {
+        widthMur = salleLargeur;
+        rotationY = Math.PI / 2;
+        positionX = -salleLongueur / 2;
+        positionZ = 0;
+        color = new BABYLON.Color3.FromInts(153, 153, 255);
+    } else if (typeMur === 4) {
+        widthMur = salleLongueur;
+        rotationY = Math.PI;
+        positionX = 0;
+        positionZ = -salleLargeur / 2;
+        color = new BABYLON.Color3.FromInts(255, 153, 204);
+    }
+
+    // Retourner les paramètres du mur
+    return [rotationY, positionX, positionZ, widthMur, color];
+}
