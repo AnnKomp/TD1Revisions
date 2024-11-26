@@ -5,7 +5,9 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TD1Revisions", "TD1Revisions\TD1Revisions.csproj", "{6B2C1AA0-45D5-4EE3-A552-B2FF259FCC3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TD1RevisionsTests1", "TD1RevisionsTests1\TD1RevisionsTests1.csproj", "{12AAAF2E-585E-429C-8BD6-DBE7CBFAF7F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TD1RevisionsTests1", "TD1RevisionsTests1\TD1RevisionsTests1.csproj", "{12AAAF2E-585E-429C-8BD6-DBE7CBFAF7F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTD1Revisions", "BlazorTD1Revisions\BlazorTD1Revisions.csproj", "{269C833B-E57D-4090-A2DE-C0B32CB339CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{12AAAF2E-585E-429C-8BD6-DBE7CBFAF7F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12AAAF2E-585E-429C-8BD6-DBE7CBFAF7F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12AAAF2E-585E-429C-8BD6-DBE7CBFAF7F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{269C833B-E57D-4090-A2DE-C0B32CB339CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{269C833B-E57D-4090-A2DE-C0B32CB339CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{269C833B-E57D-4090-A2DE-C0B32CB339CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{269C833B-E57D-4090-A2DE-C0B32CB339CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

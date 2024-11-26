@@ -7,7 +7,7 @@ namespace TD1Revisions.Models.DataManager
 {
     public class MarqueManager : IDataRepository<Marque>
     {
-        readonly ProduitsDBContext _dbContext;
+        readonly ProduitsDBContext? _dbContext;
 
         public MarqueManager() { }
 
@@ -50,5 +50,7 @@ namespace TD1Revisions.Models.DataManager
             marque.NomMarque = entity.NomMarque;
             await _dbContext.SaveChangesAsync();
         }
+
+
     }
 }

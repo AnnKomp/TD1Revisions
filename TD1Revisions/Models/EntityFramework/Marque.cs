@@ -6,7 +6,7 @@ namespace TD1Revisions.Models.EntityFramework
 {
 
     [PrimaryKey("IdMarque")]
-    [Table("Marque")]
+    [Table("marque")]
     public partial class Marque
     {
         [Key]
@@ -18,6 +18,8 @@ namespace TD1Revisions.Models.EntityFramework
 
         [InverseProperty(nameof(Produit.IdMarqueNavigation))]
         public virtual ICollection<Produit> Produits { get; set; } = new List<Produit>();
+
+
 
     }
 }

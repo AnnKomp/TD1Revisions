@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace TD1Revisions.Models.EntityFramework
 {
     [PrimaryKey("IdProduit")]
-    [Table("Produit")]
+    [Table("produit")]
     public partial class Produit
     {
         [Key]
@@ -13,6 +13,7 @@ namespace TD1Revisions.Models.EntityFramework
         public int IdProduit { get; set; }
 
         [Column("nomproduit")]
+
         public string NomProduit { get; set; }
 
 
@@ -21,11 +22,16 @@ namespace TD1Revisions.Models.EntityFramework
 
 
         [Column("nomphoto")]
-        public string NomPhoto { get; set; }
-
+        public string? NomPhoto { get; set; }
 
         [Column("uriphoto")]
-        public string UriPhoto { get; set; }
+        public string? UriPhoto { get; set; }
+
+        [Column("idmarque")]
+        public int IdMarque { get; set; }
+
+        [Column("idtypeproduit")]
+        public int IdTypeProduit { get; set; }
 
         //faire en sorte que le stockreel ne soit pas < stock min et > stock max
         [Column("stockreel")]
@@ -39,13 +45,13 @@ namespace TD1Revisions.Models.EntityFramework
         [Column("stockmax")]
         public int StockMax { get; set; }
 
-        [ForeignKey("idmarque")]
+        [ForeignKey(nameof(IdMarque))]
         [InverseProperty(nameof(Marque.Produits))]
-        public virtual Marque IdMarqueNavigation { get; set; } = null!;
+        public virtual Marque? IdMarqueNavigation { get; set; } 
 
 
-        [ForeignKey("idtypeproduit")]
+        [ForeignKey(nameof(IdTypeProduit))]
         [InverseProperty(nameof(TypeProduit.Produits))]
-        public virtual TypeProduit IdTypeProduitNavigation { get; set; } = null!;
+        public virtual TypeProduit? IdTypeProduitNavigation { get; set; } 
     }
 }

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace TD1Revisions.Models.EntityFramework
 {
     [PrimaryKey("IdTypeProduit")]
-    [Table("TypeProduit")]
+    [Table("typeproduit")]
     public partial class TypeProduit
     {
 

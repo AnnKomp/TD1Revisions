@@ -14,7 +14,7 @@ namespace TD1Revisions.Controllers
     [ApiController]
     public class MarquesController : ControllerBase
     {
-        //private readonly ProduitsDBContext _context;
+        private readonly ProduitsDBContext _context;
 
         private readonly IDataRepository<Marque> dataRepository;
 

@@ -11,8 +11,8 @@ using TD1Revisions.Models.EntityFramework;
 namespace TD1Revisions.Migrations
 {
     [DbContext(typeof(ProduitsDBContext))]
-    [Migration("20240904084026_CreationBDDProduits")]
-    partial class CreationBDDProduits
+    [Migration("20241004061123_CreationBDProduits3")]
+    partial class CreationBDProduits3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,14 +58,6 @@ namespace TD1Revisions.Migrations
                         .HasColumnType("text")
                         .HasColumnName("description");
 
-                    b.Property<int>("IdMarque")
-                        .HasColumnType("integer")
-                        .HasColumnName("idmarque");
-
-                    b.Property<int>("IdTypeProduit")
-                        .HasColumnType("integer")
-                        .HasColumnName("idtypeproduit");
-
                     b.Property<string>("NomPhoto")
                         .IsRequired()
                         .HasColumnType("text")
@@ -91,20 +83,20 @@ namespace TD1Revisions.Migrations
                     b.Property<string>("UriPhoto")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("uriPhoto");
+                        .HasColumnName("uriphoto");
 
-                    b.Property<int>("idMarque")
+                    b.Property<int>("idmarque")
                         .HasColumnType("integer");
 
-                    b.Property<int>("idTypeProduit")
+                    b.Property<int>("idtypeproduit")
                         .HasColumnType("integer");
 
                     b.HasKey("IdProduit")
                         .HasName("pk_produit");
 
-                    b.HasIndex("idMarque");
+                    b.HasIndex("idmarque");
 
-                    b.HasIndex("idTypeProduit");
+                    b.HasIndex("idtypeproduit");
 
                     b.ToTable("Produit");
                 });
@@ -133,13 +125,13 @@ namespace TD1Revisions.Migrations
                 {
                     b.HasOne("TD1Revisions.Models.EntityFramework.Marque", "IdMarqueNavigation")
                         .WithMany("Produits")
-                        .HasForeignKey("idMarque")
+                        .HasForeignKey("idmarque")
                         .IsRequired()
                         .HasConstraintName("fk_produit_marque");
 
                     b.HasOne("TD1Revisions.Models.EntityFramework.TypeProduit", "IdTypeProduitNavigation")
                         .WithMany("Produits")
-                        .HasForeignKey("idTypeProduit")
+                        .HasForeignKey("idtypeproduit")
                         .IsRequired()
                         .HasConstraintName("fk_produit_typeproduit");
 

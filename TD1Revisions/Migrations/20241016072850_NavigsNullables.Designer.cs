@@ -11,8 +11,8 @@ using TD1Revisions.Models.EntityFramework;
 namespace TD1Revisions.Migrations
 {
     [DbContext(typeof(ProduitsDBContext))]
-    [Migration("20240904085827_CreationBDDProduits2")]
-    partial class CreationBDDProduits2
+    [Migration("20241016072850_NavigsNullables")]
+    partial class NavigsNullables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,7 +41,7 @@ namespace TD1Revisions.Migrations
                     b.HasKey("IdMarque")
                         .HasName("pk_marque");
 
-                    b.ToTable("Marque");
+                    b.ToTable("marque");
                 });
 
             modelBuilder.Entity("TD1Revisions.Models.EntityFramework.Produit", b =>
@@ -58,8 +58,15 @@ namespace TD1Revisions.Migrations
                         .HasColumnType("text")
                         .HasColumnName("description");
 
+                    b.Property<int>("IdMarque")
+                        .HasColumnType("integer")
+                        .HasColumnName("idmarque");
+
+                    b.Property<int>("IdTypeProduit")
+                        .HasColumnType("integer")
+                        .HasColumnName("idtypeproduit");
+
                     b.Property<string>("NomPhoto")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("nomphoto");
 
@@ -81,24 +88,17 @@ namespace TD1Revisions.Migrations
                         .HasColumnName("stockreel");
 
                     b.Property<string>("UriPhoto")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("uriphoto");
-
-                    b.Property<int>("idmarque")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("idtypeproduit")
-                        .HasColumnType("integer");
 
                     b.HasKey("IdProduit")
                         .HasName("pk_produit");
 
-                    b.HasIndex("idmarque");
+                    b.HasIndex("IdMarque");
 
-                    b.HasIndex("idtypeproduit");
+                    b.HasIndex("IdTypeProduit");
 
-                    b.ToTable("Produit");
+                    b.ToTable("produit");
                 });
 
             modelBuilder.Entity("TD1Revisions.Models.EntityFramework.TypeProduit", b =>
@@ -118,20 +118,20 @@ namespace TD1Revisions.Migrations
                     b.HasKey("IdTypeProduit")
                         .HasName("pk_typeproduit");
 
-                    b.ToTable("TypeProduit");
+                    b.ToTable("typeproduit");
                 });
 
             modelBuilder.Entity("TD1Revisions.Models.EntityFramework.Produit", b =>
                 {
                     b.HasOne("TD1Revisions.Models.EntityFramework.Marque", "IdMarqueNavigation")
                         .WithMany("Produits")
-                        .HasForeignKey("idmarque")
+                        .HasForeignKey("IdMarque")
                         .IsRequired()
                         .HasConstraintName("fk_produit_marque");
 
                     b.HasOne("TD1Revisions.Models.EntityFramework.TypeProduit", "IdTypeProduitNavigation")
                         .WithMany("Produits")
-                        .HasForeignKey("idtypeproduit")
+                        .HasForeignKey("IdTypeProduit")
                         .IsRequired()
                         .HasConstraintName("fk_produit_typeproduit");
 
