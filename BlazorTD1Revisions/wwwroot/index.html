@@ -34,6 +34,14 @@
     <script type="module" src="babylonInterop.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
 
+    <script>
+        if (typeof initializeBabylon === "undefined") {
+            console.error("initializeBabylon is not loaded. Check your script path.");
+        } else {
+            console.log("initializeBabylon is loaded successfully!");
+        }
+    </script>
+
 
 
 
